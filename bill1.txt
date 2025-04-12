@@ -1,0 +1,23 @@
+
+	water : 10 : 14
+
+	frooti : 10:20
+
+	egg : 10 : 8
+
+	cloth : 200 : 18
+
+	cake : 300 : 27
+
+	mobile : 200 : 6
+
+	biscuits : 40 : 6
+
+	copy : 30:60
+
+	pen : 20 : 22
+
+
+	Dates : 150 : 28
+
+
