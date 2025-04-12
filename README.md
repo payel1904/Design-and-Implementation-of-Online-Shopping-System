@@ -1,1 +1,3 @@
 # Design-and-Implementation-of-Online-Shopping-System-Using-C++-Oops-Concept
+This project aims to develop a simple console-based Online Shopping System using Object-Oriented Programming (OOP) principles in C++. It facilitates two types of users—owners and customers. Owners can add items to a virtual inventory, while customers can view available items and generate bills based on purchases. The system stores inventory data in a text file to ensure persistence between sessions. It demonstrates the application of OOP concepts like encapsulation, abstraction, and modular programming to design a practical and interactive system.
+
