@@ -86,8 +86,8 @@ Run the executable:
 bash
 Copy
 Edit
-<pre> ```cpp g++ shopping_system.cpp -o shopping_system
-./shopping_system ``` </pre>
+ <pre>  g++ shopping_system.cpp -o shopping_system
+./shopping_system  </pre>
 
 💡 Note: This code uses windows.h for system-specific operations. It may require modification to run on Linux/Mac (e.g., replacing system("cls") and Sleep() with platform-specific equivalents).
 
@@ -101,6 +101,7 @@ GUI-based version using C++ frameworks or web-based frontend.
 
 ## 🧑‍💻 Author
 Jyotismrita Basisthya
+
 Priti Goala
 
 
