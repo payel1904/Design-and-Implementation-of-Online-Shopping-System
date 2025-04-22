@@ -100,7 +100,7 @@ Encrypt stored passwords.
 GUI-based version using C++ frameworks or web-based frontend.
 
 ## 🧑‍💻 Author
-Jyotismrita Basisthya  [GitHub](payel1904)
+Jyotismrita Basisthya - [GitHub](https://github.com/payel1904)
 
 Priti Goala
 
