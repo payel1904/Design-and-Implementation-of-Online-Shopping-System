@@ -6,12 +6,30 @@
 using namespace std;
 class User {
     public:
+        virtual void showMenu() = 0; 
+    };
+    class Owner: public User {
+        public:
+        void showMenu() override {
+            cout << "\tOwner Menu" << endl;
+            cout << "\t1. Add Item" << endl;
+            cout << "\t2. Exit" << endl;
+        }
+
+    };
+     
+    class Customer: public User {
+        public:
         string username;
         string password;
-    
-        User(string username, string password) {
-            this->username = username;
-            this->password = password;
+
+        
+        Customer() : username(""), password("") {}
+        Customer(string username, string password) : username(username), password(password) {}
+        void showMenu() override {
+            cout << "\tCustomer Menu" << endl;
+            cout << "\t1. Add to Cart" << endl;
+            cout << "\t2. Exit" << endl;
         }
     };
 class Bill{
@@ -49,7 +67,7 @@ class Bill{
 };
 class ShoppingSystem {
     private:
-        vector<User> users;        
+        vector<Customer> users;        
     public:
         ShoppingSystem() {
             loadUsers();
@@ -63,7 +81,7 @@ class ShoppingSystem {
             cout << "Enter password: ";
             cin >> password;
     
-            User newUser(username, password);
+            Customer newUser(username, password); 
             users.push_back(newUser);
             saveUserToFile(newUser);
             cout << "Registration successful!" << endl;
@@ -77,7 +95,7 @@ class ShoppingSystem {
             cout << "Enter password: ";
             cin >> password;
     
-            for (auto& user : users) {
+            for (auto& user: users) {
                 if (user.username == username && user.password == password) {
                     cout << "Login successful!" << endl;
                     return true;
@@ -87,22 +105,22 @@ class ShoppingSystem {
             return false;
         }
     
-        // Load users from a file
+        
         void loadUsers() {
             ifstream file("users.dat");
             string username, password;
             while (file >> username >> password) {
-                users.push_back(User(username, password));
+                    users.push_back(Customer(username, password));
+                } 
+            file.close();
             }
-            file.close();
-        }
-    
-        // Save new user to a file
-        void saveUserToFile(User& user) {
-            ofstream file("users.dat", ios::app);
-            file << user.username << " " << user.password << endl;
-            file.close();
-        }
+        
+
+            void saveUserToFile(Customer& user) {
+                ofstream file("users.dat", ios::app);
+                file << user.username << " " << user.password << endl;
+                file.close();
+            }
     };
 
 void addData(Bill b)
@@ -129,7 +147,7 @@ void addData(Bill b)
         cout<<"enter quantity"<<endl;
         cin>>quantity;
         b.setQuantity(quantity);
-        ofstream out("bill1.txt",ios::app);//for not be overriden
+        ofstream out("bill1.txt",ios::app);
         if(!out)
         {
             cout<<"Error: file can't open "<<endl;
@@ -235,7 +253,6 @@ int main()
     while(!exit)
     {
       system("cls");//clear the previous output and output the current
-      int val;
       cout<<"\tWelcome to online shopping system"<<endl;
       cout<<"\tAvailable items:"<<endl;
      // ifstream inputFile("bill1.txt");
@@ -258,15 +275,16 @@ if (inputFile.is_open()) {
       cin>>usertype;
       if(usertype==1)
       { system("cls");
-        cout<<"\t1.addItem"<<endl;
-       cout<<"\t3.exit"<<endl;
+        int val;
+        Owner o;
+        o.showMenu();
        cout<<"\tenter choice"<<endl;
         cin>>val;
         if(val==1)
       {  system("cls");//previous output will be hide
         addData(b);
         Sleep(2000);
-      }else if(val==3)
+      }else if(val==2)
       {
         system("cls");
         exit=true;
@@ -289,14 +307,15 @@ if (inputFile.is_open()) {
             case 2:
             system("cls");
                 if (s.loginUser()) {
-                    cout<<"\t2.Add to Cart"<<endl;
-                    cout<<"\t3.exit"<<endl;
-                    cout<<"\tenter choice"<<endl;
-                    cin>>val;
-                     if(val==2)
+
+                    Customer c;
+                    c.showMenu();
+                    int v;
+                    cin>>v;
+                     if(v==1)
                     {
                       printBill();
-                    }else if(val==3)
+                    }else if(v==2)
                     {
                       system("cls");
                       exit=true;
